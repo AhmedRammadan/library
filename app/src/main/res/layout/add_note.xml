@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="40dp"
+            android:hint="Enter Title"/>
+
+        <EditText
+            android:id="@+id/size"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginLeft="40dp"
+            android:hint="size"
+            android:gravity="top"/>
+        <EditText
+            android:id="@+id/page"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginLeft="40dp"
+            android:hint="page"
+            android:gravity="top"/>
+        <EditText
+            android:id="@+id/descbook"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginLeft="40dp"
+            android:hint="descbook"
+            android:gravity="top"/>
+        <EditText
+            android:id="@+id/descwriter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginLeft="40dp"
+            android:hint="descwriter"
+            android:gravity="top"/>
+
+        <EditText
+            android:id="@+id/namewriter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginLeft="40dp"
+            android:hint="namewriter"
+            android:gravity="top"/>
+        <EditText
+            android:id="@+id/Link"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginLeft="40dp"
+            android:hint="Link"
+            android:gravity="top"/>
+        <EditText
+            android:id="@+id/image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginLeft="40dp"
+            android:hint="image"
+            android:gravity="top"/>
+
+
+
+        <Button
+            android:id="@+id/add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Add"
+            android:textAllCaps="false"
+            android:layout_marginBottom="20dp"
+            />
+
+    </LinearLayout>
+    </ScrollView>
+</LinearLayout>
