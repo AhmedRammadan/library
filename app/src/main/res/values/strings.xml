@@ -6,4 +6,20 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
+
+    <string name="download">download</string>
+    <string name="size">size</string>
+    <string name="view">view</string>
+    <string name="page">page</string>
+    <string name="youNeedDownload">you need Download </string>
+    <string name="kidsStories">kids Stories</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="Import">Import</string>
+    <string name="Gallery">Gallery</string>
+    <string name="Tools">Tools</string>
+    <string name="Share">Share</string>
+    <string name="Send">Send</string>
+    <string name="Slideshow">Slideshow</string>
+    <string name="Communicate">Communicate</string>
 </resources>

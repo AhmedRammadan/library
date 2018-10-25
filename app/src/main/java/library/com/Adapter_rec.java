@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -27,19 +28,19 @@ public class Adapter_rec extends RecyclerView.Adapter<ViewHolder> {
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(mcontext).inflate(R.layout.book_item,null);
-
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder viewHolder, int i) {
-        viewHolder.title.setText(books.get(i).getTitle());
+
+           viewHolder.title.setText(books.get(i).getTitle());
         viewHolder.size.setText(books.get(i).getSize());
         Picasso.get().load(books.get(i).getIamge()).into(viewHolder.mgbook);
         viewHolder.setItemClickListener(new ItemClickListener() {
             @Override
             public void onItemClick(View v, int position) {
-                String title= books.get(position).getTitle();
+                try { String title= books.get(position).getTitle();
                 String desc = books.get(position).getDesc_book();
                 String link = books.get(position).getLink();
                 String nameWriter = books.get(position).getnamewriter();
@@ -66,8 +67,11 @@ public class Adapter_rec extends RecyclerView.Adapter<ViewHolder> {
                 intent.putExtra("iImage",bytes);
                 intent.putExtra("inameWriter",nameWriter);
                 mcontext.startActivity(intent);
+                }catch (Exception e){
+                }
             }
         });
+
     }
 
     @Override

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">library</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings"> الاعدادات</string>
+
+    <string name="download">التحميل</string>
+    <string name="size">الحجم</string>
+    <string name="view">المشاهدات</string>
+    <string name="page">الصفحات</string>
+    <string name="youNeedDownload">هل تريد تحميل</string>
+    <string name="kidsStories">قصص اطفال</string>
+    <string name="yes">نعم</string>
+    <string name="no">لا</string>
+    <string name="Import">استيراد</string>
+    <string name="Gallery">معرض الصور</string>
+    <string name="Tools">الادوات</string>
+    <string name="Share">مشاركة</string>
+    <string name="Send">ارسال</string>
+    <string name="Slideshow">عرض الشرائح</string>
+    <string name="Communicate">للتواصل</string>
+</resources>

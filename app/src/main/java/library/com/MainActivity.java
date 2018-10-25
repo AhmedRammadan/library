@@ -1,6 +1,9 @@
 package library.com;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
@@ -30,16 +33,22 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    AlertDialog.Builder builder;
     RecyclerView reckids;
     ArrayList<Items_Book> bookskids;
     Adapter_rec adapter_kids;
     DatabaseReference refkids;
+    ProgressDialog progressDoalog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Recycler_kids();
+        try {
+            Recycler_kids();
+        }catch (Exception e){
+
+        }
 
 
 
@@ -121,7 +130,7 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
     public void setbook() {
-        final AlertDialog.Builder builder= new AlertDialog.Builder(this);
+        builder= new AlertDialog.Builder(this);
         final View dialogShow= getLayoutInflater().inflate(R.layout.add_note,null);
         builder.setView(dialogShow);
         builder.create();
@@ -148,29 +157,37 @@ public class MainActivity extends AppCompatActivity
         });
     }
     void Recycler_kids(){
-        reckids=findViewById(R.id.rec_kids);
-        reckids.setLayoutManager(new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL,false));
-        bookskids =new ArrayList<>();
 
-        refkids = FirebaseDatabase.getInstance().getReference().child("books").child("kids Stories");
-        refkids.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                bookskids.clear();
-                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
-                    Items_Book book = dataSnapshot1.getValue(Items_Book.class);
-                    bookskids.add(book);
-                }
+           reckids = findViewById(R.id.rec_kids);
 
-                adapter_kids=new Adapter_rec(MainActivity.this,bookskids);
-                reckids.setAdapter(adapter_kids);
-            }
+           reckids.setLayoutManager(new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false));
+           bookskids = new ArrayList<>();
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
+           refkids = FirebaseDatabase.getInstance().getReference().child("books").child("kids Stories");
+           refkids.addValueEventListener(new ValueEventListener() {
+               @Override
+               public void onDataChange(DataSnapshot dataSnapshot) {
+                   bookskids.clear();
+                   for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+                       Items_Book book = dataSnapshot1.getValue(Items_Book.class);
+                       bookskids.add(book);
+                   }
 
-                Toast.makeText(MainActivity.this, "opsssssss Sorry", Toast.LENGTH_SHORT).show();
-            }
-        });
+                   adapter_kids = new Adapter_rec(MainActivity.this, bookskids);
+                   reckids.setAdapter(adapter_kids);
+               }
+
+               @Override
+               public void onCancelled(DatabaseError databaseError) {
+
+                   Toast.makeText(MainActivity.this, "opsssssss Sorry", Toast.LENGTH_SHORT).show();
+               }
+           });
     }
+
 }
+
+
+
+
+

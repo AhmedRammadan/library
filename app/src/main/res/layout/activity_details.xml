@@ -19,55 +19,56 @@
                 android:layout_height="190dp"
                 android:background="#26b99a"/>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp">
+
+
             <ImageView
                 android:id="@+id/dimageView"
                 android:layout_width="100dp"
-                android:layout_height="125dp"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentTop="true"
-                android:layout_gravity="center"
-                android:layout_marginLeft="20dp"
-                android:layout_marginBottom="20dp"
-                android:layout_marginTop="100dp"
-                tools:src="@tools:sample/avatars" />
+                android:layout_height="135dp"
+                android:layout_gravity="center_vertical"
+                tools:src="@tools:sample/avatars"
+                android:layout_marginTop="35dp" />
 
-            <TextView
-                android:id="@+id/dtitle"
-                style="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentBottom="true"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="111dp"
-                android:layout_marginBottom="88dp"
-                android:layout_toRightOf="@id/dimageView"
-                android:textColor="#fff"
-                tools:text="@tools:sample/full_names" />
-            <TextView
-                android:id="@+id/nameWriter"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:layout_alignParentBottom="true"
-                android:layout_marginBottom="70dp"
-                android:layout_marginLeft="10dp"
-                android:textColor="#fff"
-                android:layout_toRightOf="@id/dimageView"/>
-            <Button
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="20dp"
+                android:layout_marginTop="115dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/dtitle"
+                    style="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="#fff"
+                    tools:text="@tools:sample/full_names" />
+                <TextView
+                    android:id="@+id/nameWriter"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:text="sdsd"
+                    android:textColor="#fff"/>
+            </LinearLayout>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:background="@drawable/btn_background"
-                android:text="Download"
+                android:layout_marginRight="3dp"
+                android:text="@string/download"
                 android:textAllCaps="false"
                 android:textColor="#fff"
                 android:onClick="download"
-                android:layout_marginBottom="4dp"/>
+                android:layout_marginTop="200dp"
+                android:layout_gravity="top"/>
+            </LinearLayout>
 
         </RelativeLayout>
 
@@ -89,7 +90,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     tools:ignore="VectorDrawableCompat"
-                    android:text="Size"
+                    android:text="@string/size"
                     android:textColor="#26b99a"/>
                 <TextView
                     android:id="@+id/dsize"
@@ -108,7 +109,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     tools:ignore="VectorDrawableCompat"
-                    android:text="page"
+                    android:text="@string/page"
                     android:textColor="#26b99a"/>
                 <TextView
                     android:id="@+id/dpage"
@@ -127,7 +128,8 @@
                    android:layout_height="wrap_content"
                    android:layout_weight="1"
                    tools:ignore="VectorDrawableCompat"
-                   android:text="Download"
+                   android:text="@string/download"
+
                    android:textColor="#26b99a"/>
                <TextView
                    android:id="@+id/dcounter_download"
@@ -147,7 +149,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     tools:ignore="VectorDrawableCompat"
-                    android:text="View"
+                    android:text="@string/view"
                     android:textColor="#26b99a"/>
                 <TextView
                     android:id="@+id/dview"
