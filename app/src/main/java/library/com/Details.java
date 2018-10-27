@@ -32,7 +32,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.io.File;
 
 public class Details extends AppCompatActivity {
-    TextView title, descrpition, nameWriter, dsize, dpage, dcounter_download, dview;
+    TextView title, descrpition, nameWriter, dsize, dpage, dcounter_download, dview,dcategory;
     ImageView image;
     String link;
     String id;
@@ -57,6 +57,7 @@ public class Details extends AppCompatActivity {
     dpage = findViewById(R.id.dpage);
     dsize = findViewById(R.id.dsize);
     dview = findViewById(R.id.dview);
+    dcategory = findViewById(R.id.category);
 
     Intent intent = getIntent();
     ititle = intent.getStringExtra("iTitle");
@@ -65,6 +66,7 @@ public class Details extends AppCompatActivity {
     icounter_download = intent.getIntExtra("icounter_download", 0);
     iview = intent.getIntExtra("iview", 0);
     String ipage = intent.getStringExtra("ipage");
+    String icategory = intent.getStringExtra("icategory");
     link = intent.getStringExtra("ilink");
     String inameWriter = intent.getStringExtra("inameWriter");
     String idsize = intent.getStringExtra("idsize");
@@ -84,9 +86,10 @@ try {
     dpage.setText(ipage);
     nameWriter.setText(inameWriter);
     dsize.setText(idsize);
+    dcategory.setText(icategory);
 
-
-    counter_download = FirebaseDatabase.getInstance().getReference().child("books").child("kids Stories").child(id);
+    Toast.makeText(this, ""+icategory, Toast.LENGTH_SHORT).show();
+    counter_download = FirebaseDatabase.getInstance().getReference().child("books").child(icategory).child(id);
 
     dcounter_download.setText("" + icounter_download);
 
@@ -104,7 +107,7 @@ try {
         String yes =getResources().getString(R.string.yes);
         String no =getResources().getString(R.string.no);
         String message =getResources().getString(R.string.youNeedDownload);
-        AlertDialog builder =new AlertDialog.Builder(this)
+        new AlertDialog.Builder(this)
                 .setTitle(ititle)
                 .setIcon(R.drawable.download)
                 .setMessage(message+" "+ititle)

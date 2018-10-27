@@ -9,10 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
-
 import com.squareup.picasso.Picasso;
-
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
@@ -47,6 +44,7 @@ public class Adapter_rec extends RecyclerView.Adapter<ViewHolder> {
                 String dsize = books.get(position).getSize();
                 String dpage = books.get(position).getPage();
                 String id = books.get(position).getId();
+                String category = books.get(position).getCategory();
                 int dcounter_download = books.get(position).getCounter_download();
                 int dview = books.get(position).getView();
                 BitmapDrawable bitmapDrawable = (BitmapDrawable) viewHolder.mgbook.getDrawable();
@@ -66,6 +64,7 @@ public class Adapter_rec extends RecyclerView.Adapter<ViewHolder> {
                 intent.putExtra("ipage",dpage);
                 intent.putExtra("iImage",bytes);
                 intent.putExtra("inameWriter",nameWriter);
+                intent.putExtra("icategory",category);
                 mcontext.startActivity(intent);
                 }catch (Exception e){
                 }

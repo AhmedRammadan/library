@@ -17,7 +17,15 @@
             android:layout_height="wrap_content"
             android:layout_margin="40dp"
             android:hint="Enter Title"/>
-
+        <EditText
+            android:id="@+id/category"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginLeft="40dp"
+            android:hint="category"
+            android:gravity="top"/>
         <EditText
             android:id="@+id/size"
             android:layout_width="match_parent"

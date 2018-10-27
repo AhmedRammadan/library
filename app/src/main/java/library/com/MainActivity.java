@@ -18,6 +18,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.HorizontalScrollView;
@@ -34,21 +35,22 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     AlertDialog.Builder builder;
-    RecyclerView reckids;
-    ArrayList<Items_Book> bookskids;
-    Adapter_rec adapter_kids;
-    DatabaseReference refkids;
-    ProgressDialog progressDoalog;
+    RecyclerView reckids,reclearn,recPsychology_and_self_development;
+    ArrayList<Items_Book> bookskids,booksLearn,booksPsychology_and_self_development;
+    Adapter_rec adapter_kids,adapter_learn,adapter_Psychology_and_self_development;
+    DatabaseReference refkids,reflearn,refPsychology_and_self_development;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        try {
-            Recycler_kids();
-        }catch (Exception e){
+        Recycler_kids();
+        Recycler_learn();
+        Recycler_Psychology_and_self_development();
 
-        }
+
 
 
 
@@ -143,25 +145,26 @@ public class MainActivity extends AppCompatActivity
         final EditText size=dialogShow.findViewById(R.id.size);
         final EditText page=dialogShow.findViewById(R.id.page);
         final EditText link=dialogShow.findViewById(R.id.Link);
+        final EditText category=dialogShow.findViewById(R.id.category);
         Button add=dialogShow.findViewById(R.id.add);
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                String id =refkids.push().getKey();
-                Items_Book note = new Items_Book(id,et_title.getText().toString(),0,0,size.getText().toString(),page.getText().toString(),image.getText().toString(),
+                String id =refPsychology_and_self_development.push().getKey();
+                Items_Book note = new Items_Book(id,et_title.getText().toString(),category.getText().toString(),0,0,
+                        size.getText().toString(),page.getText().toString(),image.getText().toString(),
                         descbook.getText().toString(),descwriter.getText().toString(),link.getText().toString(),
                         namewriter.getText().toString());
-                refkids.child(id).setValue(note);
+                refPsychology_and_self_development.child(id).setValue(note);
             }
         });
     }
     void Recycler_kids(){
+        reckids =findViewById(R.id.rec_kids);
+        reckids.setLayoutManager(new LinearLayoutManager(MainActivity.this,LinearLayoutManager.HORIZONTAL,false));
 
-           reckids = findViewById(R.id.rec_kids);
-
-           reckids.setLayoutManager(new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false));
-           bookskids = new ArrayList<>();
+        bookskids = new ArrayList<>();
 
            refkids = FirebaseDatabase.getInstance().getReference().child("books").child("kids Stories");
            refkids.addValueEventListener(new ValueEventListener() {
@@ -183,6 +186,59 @@ public class MainActivity extends AppCompatActivity
                    Toast.makeText(MainActivity.this, "opsssssss Sorry", Toast.LENGTH_SHORT).show();
                }
            });
+    }
+    void Recycler_learn(){
+        reclearn =findViewById(R.id.rec_learn);
+        reclearn.setLayoutManager(new LinearLayoutManager(MainActivity.this,LinearLayoutManager.HORIZONTAL,false));
+
+        booksLearn = new ArrayList<>();
+
+        reflearn = FirebaseDatabase.getInstance().getReference().child("books").child("learn");
+        reflearn.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                booksLearn.clear();
+                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+                    Items_Book book = dataSnapshot1.getValue(Items_Book.class);
+                    booksLearn.add(book);
+                }
+
+                adapter_learn = new Adapter_rec(MainActivity.this, booksLearn);
+                reclearn.setAdapter(adapter_learn);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+                Toast.makeText(MainActivity.this, "opsssssss Sorry", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+    void Recycler_Psychology_and_self_development(){
+        recPsychology_and_self_development =findViewById(R.id.rec_Psychology_and_self_development);
+        recPsychology_and_self_development.setLayoutManager(new LinearLayoutManager(MainActivity.this,LinearLayoutManager.HORIZONTAL,false));
+        booksPsychology_and_self_development = new ArrayList<>();
+
+        refPsychology_and_self_development = FirebaseDatabase.getInstance().getReference().child("books").child("Psychology and self development");
+        refPsychology_and_self_development.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                booksPsychology_and_self_development.clear();
+                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+                    Items_Book book = dataSnapshot1.getValue(Items_Book.class);
+                    booksPsychology_and_self_development.add(book);
+                }
+
+                adapter_Psychology_and_self_development = new Adapter_rec(MainActivity.this, booksPsychology_and_self_development);
+                recPsychology_and_self_development.setAdapter(adapter_Psychology_and_self_development);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+                Toast.makeText(MainActivity.this, "opsssssss Sorry", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
 }

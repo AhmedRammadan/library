@@ -1,8 +1,16 @@
 package library.com;
 
 public class Items_Book {
-   private String id, title, iamge, desc_book, desc_writer, link, namewriter,size,page;
+   private String id, title, iamge, desc_book, desc_writer, link, namewriter,size,page,category;
    private int counter_download , view;
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
 
     public int getView() {
         return view;
@@ -32,7 +40,7 @@ public class Items_Book {
         this.page = page;
     }
 
-    public Items_Book() {
+    public Items_Book(String name) {
     }
 
     public String getSize() {
@@ -43,7 +51,7 @@ public class Items_Book {
         this.size = size;
     }
 
-    public Items_Book(String id, String title,int view, int counter_download,String size , String page, String iamge, String desc_book, String desc_writer, String link, String namewriter) {
+    public Items_Book(String id, String title,String category,int view, int counter_download,String size , String page, String iamge, String desc_book, String desc_writer, String link, String namewriter) {
         this.id = id;
         this.title = title;
         this.iamge = iamge;
@@ -53,6 +61,7 @@ public class Items_Book {
         this.namewriter = namewriter;
         this.size = size;
         this.page = page;
+        this.category = category;
         this.counter_download = counter_download;
         this.view = view;
     }
